@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLO Local — San Luis Obispo's Hometown News</title>
+<meta name="description" content="San Luis Obispo's independent community news source. Local news, SLO High Tigers, Cal Poly, events, sports, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E3A5F;--navy2:#2D5885;--accent:#C8773A;--accent2:#E8934A;
+  --tiger:#B5262F;--green:#2A6B3E;
+  --bg:#F8F5EF;--bg2:#fff;--text:#1C1C1C;--muted:#6B6860;
+  --border:#E5DDD0;--chat-bg:#f0ede6;
+  --fh:'Playfair Display',Georgia,serif;
+  --fb:'DM Sans',sans-serif;--fr:'Lora',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--fb);cursor:pointer}
+input,textarea,select{font-family:var(--fb)}
+img{max-width:100%;display:block}
+
+/* TOPBAR */
+.topbar{background:var(--navy);color:#fff;font-size:11px;letter-spacing:.06em;padding:5px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.tbl a{color:#adc4e0;margin-left:12px;font-size:11px}
+.tbl a:hover{color:#fff}
+
+/* MASTHEAD */
+.masthead{background:var(--bg2);border-bottom:3px solid var(--navy);padding:16px 20px 12px;text-align:center}
+.mdate{font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:3px}
+.masthead h1{font-family:var(--fh);font-size:clamp(36px,7vw,74px);font-weight:700;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.masthead h1 span{color:var(--accent)}
+.mtag{font-family:var(--fr);font-style:italic;color:var(--muted);font-size:14px;margin-top:3px}
+
+/* NAV */
+nav{background:var(--navy);overflow-x:auto;white-space:nowrap}
+nav::-webkit-scrollbar{display:none}
+.nvi{display:flex;align-items:stretch;padding:0 10px}
+nav a{display:inline-flex;align-items:center;color:#b8cfe8;font-size:11px;font-weight:500;letter-spacing:.05em;padding:11px 12px;border-bottom:3px solid transparent;text-transform:uppercase;transition:all .15s;cursor:pointer}
+nav a:hover,nav a.active{color:#fff;border-bottom-color:var(--accent)}
+nav a.tl{color:#f4a7ab}
+nav a.tl:hover,nav a.tl.active{color:#fff;border-bottom-color:var(--tiger)}
+.nsub{margin-left:auto;background:var(--accent);color:#fff!important;border-radius:4px 4px 0 0;padding:8px 13px!important;border-bottom:none!important}
+.nsub:hover{background:var(--accent2)!important}
+
+/* TICKER */
+.ticker{background:var(--accent);color:#fff;font-size:12px;padding:5px 0;overflow:hidden;white-space:nowrap}
+.ttrack{display:inline-block;animation:tk 60s linear infinite}
+.ttrack:hover{animation-play-state:paused}
+.ttag{background:rgba(255,255,255,.2);font-weight:700;font-size:10px;letter-spacing:.08em;padding:1px 8px;border-radius:2px;margin-right:10px}
+@keyframes tk{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+
+/* ADS */
+.ad{background:#f0ece5;border:1.5px dashed #c8bfa8;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#a09880;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:8px}
+.ad-lb{width:100%;height:90px;margin:14px 0}
+.ad-r{width:100%;max-width:300px;height:250px}
+.adlbl{font-size:10px;opacity:.65;margin-top:2px}
+
+/* LAYOUT */
+.container{max-width:1180px;margin:0 auto;padding:0 18px}
+.pg{display:grid;grid-template-columns:1fr 300px;gap:26px;padding:22px 0}
+@media(max-width:860px){.pg{grid-template-columns:1fr}}
+.sb{display:flex;flex-direction:column;gap:18px}
+
+/* SECTION LABEL */
+.sl{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sl h2{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--navy);white-space:nowrap}
+.sl::after{content:'';flex:1;height:2px;background:var(--border)}
+.sl.tiger h2{color:var(--tiger)}
+.sl.tiger::after{background:var(--tiger)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:3px;margin-bottom:22px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+@media(max-width:680px){.hero{grid-template-columns:1fr}}
+.hm{position:relative;min-height:330px;cursor:pointer;background:#334}
+.hm img,.hs img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hmo{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,20,40,.88) 55%,rgba(0,0,0,.1));display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.hs{display:grid;grid-template-rows:1fr 1fr;gap:3px}
+.hsi{position:relative;min-height:163px;cursor:pointer;background:#334}
+.hsio{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,20,40,.82) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:13px}
+.hcat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:4px}
+.hcat.tc{color:#f9b0b4}
+.hhl{font-family:var(--fh);color:#fff;line-height:1.2}
+.hm .hhl{font-size:clamp(16px,2.5vw,25px);font-weight:700}
+.hs .hhl{font-size:15px;font-weight:600}
+.hmeta{font-size:11px;color:rgba(255,255,255,.6);margin-top:4px}
+
+/* CARDS */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:22px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cimgw{height:150px;background:#dde;overflow:hidden;position:relative}
+.cimgw img{width:100%;height:100%;object-fit:cover}
+.cbody{padding:12px}
+.ccat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.ccat.tc{color:var(--tiger)}
+.chl{font-family:var(--fh);font-size:16px;font-weight:600;line-height:1.25;color:var(--text);margin-bottom:6px}
+.cexc{font-size:13px;color:var(--muted);line-height:1.5}
+.cmeta{font-size:11px;color:var(--muted);margin-top:8px}
+.brk{display:inline-block;background:var(--tiger);color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-bottom:4px}
+
+/* BUSINESS WATCH */
+.ocbox{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:22px}
+.ochd{background:var(--green);color:#fff;padding:9px 15px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+.ocrow{display:flex;align-items:center;gap:10px;padding:10px 15px;border-bottom:1px solid var(--border)}
+.ocrow:last-child{border-bottom:none}
+.ocdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.oco{background:#16a34a}.occ{background:#dc2626}
+.ocname{font-size:13px;font-weight:500;flex:1}
+.octype{font-size:11px;color:var(--muted);min-width:110px}
+.ocdate{font-size:11px;color:var(--muted);text-align:right;white-space:nowrap}
+
+/* WIDGETS */
+.wid{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.wh{background:var(--navy);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px}
+.wh.tiger{background:var(--tiger)}
+.wb{padding:11px 13px}
+.wi{padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.wi:last-child{border-bottom:none}
+.wi:hover .wihl{color:var(--accent)}
+.wicat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.wicat.tc{color:var(--tiger)}
+.wihl{font-family:var(--fh);font-size:13.5px;font-weight:600;line-height:1.3}
+
+/* NEWSLETTER */
+.nl{background:var(--navy);border-radius:8px;padding:17px;color:#fff}
+.nl h3{font-family:var(--fh);font-size:18px;margin-bottom:4px}
+.nl p{font-size:13px;color:#adc4e0;margin-bottom:11px}
+.nl input{width:100%;padding:8px 11px;border-radius:5px;border:none;font-size:13px;margin-bottom:7px}
+.nl button{width:100%;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:5px;font-size:13px;font-weight:500}
+.nl button:hover{background:var(--accent2)}
+
+/* POLL */
+.pollq{font-family:var(--fh);font-size:15px;font-weight:600;margin-bottom:11px}
+.popt{display:block;width:100%;text-align:left;padding:8px 11px;margin-bottom:6px;background:var(--bg);border:1px solid var(--border);border-radius:5px;font-size:13px;cursor:pointer;transition:all .15s}
+.popt:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pbr{margin-bottom:8px;font-size:12px;color:var(--muted)}
+.pbrb{height:5px;border-radius:99px;background:var(--border);margin-top:3px}
+.pbar{height:5px;border-radius:99px;background:var(--accent);transition:width .5s}
+
+/* SCORES */
+.sc{border:1.5px solid var(--border);border-radius:7px;padding:12px;text-align:center;margin-bottom:10px}
+.sc:last-child{margin-bottom:0}
+.scsport{font-size:10px;color:var(--muted);margin-bottom:3px}
+.sct{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--navy);display:flex;align-items:center;justify-content:center;gap:8px}
+.scvs{font-size:12px;color:var(--muted);font-family:var(--fb)}
+.scs{font-size:26px;font-weight:600;color:var(--tiger);font-family:var(--fh)}
+.scr{font-size:10.5px;margin-top:2px;font-weight:500}
+.rw{color:#16a34a}.rl{color:#dc2626}
+
+/* TIGER BANNER */
+.tbanner{background:var(--tiger);color:#fff;border-radius:8px;padding:13px 18px;display:flex;align-items:center;gap:12px;margin-bottom:18px;cursor:pointer}
+.tbanner:hover{opacity:.95}
+.tbi{font-size:28px}
+.tbanner h3{font-family:var(--fh);font-size:20px;font-weight:700}
+.tbanner p{font-size:13px;opacity:.85}
+
+/* ARTICLE VIEW */
+.artfull{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.artfull img{width:100%;height:320px;object-fit:cover}
+.artbody{padding:26px 34px}
+@media(max-width:600px){.artbody{padding:16px}}
+.afcat{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.afcat.tc{color:var(--tiger)}
+.afhl{font-family:var(--fh);font-size:clamp(22px,4vw,36px);font-weight:700;line-height:1.15;color:var(--navy);margin-bottom:11px}
+.afby{font-size:13px;color:var(--muted);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.afcontent{font-family:var(--fr);font-size:17px;line-height:1.82;color:#222}
+.afcontent p{margin-bottom:1em}
+.afsrc{font-size:12px;color:var(--muted);margin-top:20px;padding-top:14px;border-top:1px solid var(--border)}
+.afsrc a{color:var(--navy);text-decoration:underline}
+.back{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--navy);font-weight:500;margin-bottom:14px;padding:6px 12px;border:1px solid var(--border);border-radius:5px;background:var(--bg2);cursor:pointer}
+.back:hover{background:var(--navy);color:#fff}
+
+/* CHAT */
+.chatbox{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.chd{background:var(--navy);color:#fff;padding:13px 18px;display:flex;align-items:center;justify-content:space-between}
+.chd h3{font-family:var(--fh);font-size:19px;font-weight:700}
+.chd small{font-size:11px;color:#adc4e0}
+.cthreads{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap}
+.ctbtn{font-size:11px;padding:4px 11px;border-radius:99px;border:1px solid var(--border);background:var(--bg);cursor:pointer;transition:all .15s}
+.ctbtn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cnrow{padding:9px 14px 0;display:flex;gap:8px;align-items:center}
+.cnrow input{padding:6px 10px;border:1px solid var(--border);border-radius:5px;font-size:13px;width:210px}
+.cnrow input:focus{outline:none;border-color:var(--navy)}
+.cnhint{font-size:11.5px;color:var(--muted)}
+.cfeed{height:380px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px;background:var(--chat-bg)}
+.cmsg{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:10px 13px}
+.cmsgd{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.cav{width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.cav.tav{background:var(--tiger)}
+.cauthor{font-size:13px;font-weight:500}
+.ctime{font-size:11px;color:var(--muted)}
+.ctext{font-size:13.5px;line-height:1.55}
+.ccomp{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:9px;align-items:flex-end}
+.ccomp textarea{flex:1;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;resize:none;min-height:42px;max-height:100px;line-height:1.5}
+.ccomp textarea:focus{outline:none;border-color:var(--navy)}
+.ccomp button{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:6px;font-size:13px;font-weight:500;white-space:nowrap}
+.ccomp button:hover{background:var(--navy2)}
+.cdisc{font-size:11px;color:var(--muted);padding:6px 14px 10px;border-top:1px solid var(--border)}
+.cempty{text-align:center;padding:28px;color:var(--muted);font-size:14px}
+
+/* SUBMIT */
+.subwrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:30px 34px;max-width:700px}
+@media(max-width:600px){.subwrap{padding:18px 14px}}
+.subwrap h2{font-family:var(--fh);font-size:29px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.subdesc{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.6}
+.fr{margin-bottom:14px}
+label{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+input[type=text],input[type=email],textarea,select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--bg);transition:border .15s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);background:#fff}
+textarea{min-height:200px;resize:vertical;line-height:1.6}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.f2{grid-template-columns:1fr}}
+.okbox{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:6px;padding:11px 14px;font-size:14px;margin-bottom:16px;display:none}
+.errbox{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b;border-radius:6px;padding:9px 13px;font-size:13px;margin-top:9px;display:none}
+.btn{background:var(--navy);color:#fff;border:none;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:500;cursor:pointer}
+.btn:hover{background:var(--navy2)}
+.btnacc{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer}
+.btnacc:hover{background:var(--accent2)}
+.btng{background:transparent;border:1px solid var(--border);color:var(--muted);padding:7px 14px;border-radius:6px;font-size:13px;cursor:pointer}
+.btng:hover{border-color:var(--navy);color:var(--navy)}
+.btndel{background:transparent;border:1px solid #fca5a5;color:#dc2626;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer}
+.btndel:hover{background:#fef2f2}
+
+/* CAT HEADER */
+.cathd{background:var(--navy);color:#fff;border-radius:8px;padding:18px 22px;margin-bottom:18px}
+.cathd h2{font-family:var(--fh);font-size:29px;font-weight:700}
+.cathd p{font-size:14px;color:#adc4e0;margin-top:3px}
+
+/* ADMIN */
+.adminwrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;max-width:960px}
+.admhd{background:var(--navy);color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.admhd h2{font-family:var(--fh);font-size:23px;font-weight:700}
+.admtabs{display:flex;border-bottom:2px solid var(--border);overflow-x:auto}
+.atab{padding:10px 18px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s;white-space:nowrap}
+.atab.active{color:var(--navy);border-bottom-color:var(--navy)}
+.admbody{padding:20px 24px}
+.subrow{display:flex;align-items:flex-start;gap:11px;padding:13px 0;border-bottom:1px solid var(--border)}
+.subrow:last-child{border-bottom:none}
+.subinfo{flex:1;min-width:0}
+.subtit{font-size:14px;font-weight:600;margin-bottom:3px}
+.submeta{font-size:11.5px;color:var(--muted);margin-bottom:5px}
+.subprev{font-size:12px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.subacts{display:flex;flex-direction:column;gap:5px;flex-shrink:0}
+.pubrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.pubrow:last-child{border-bottom:none}
+.pubinfo{flex:1;min-width:0}
+.pubhl{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.pubhl:hover{color:var(--navy)}
+.pubmeta{font-size:11px;color:var(--muted);margin-top:2px}
+.loginbox{max-width:330px;margin:50px auto;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:30px 26px;text-align:center}
+.loginbox h2{font-family:var(--fh);font-size:23px;color:var(--navy);margin-bottom:5px}
+.loginbox p{color:var(--muted);font-size:13px;margin-bottom:18px}
+.loginbox input{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:14px;margin-bottom:9px;text-align:center;letter-spacing:.1em}
+.modrow{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.modrow:last-child{border-bottom:none}
+.modinfo{flex:1;min-width:0}
+.modau{font-size:13px;font-weight:600}
+.modmeta{font-size:11px;color:var(--muted);margin-bottom:3px}
+.modtxt{font-size:13px;color:var(--text)}
+.empty{text-align:center;padding:44px 20px;color:var(--muted)}
+.ei{font-size:38px;margin-bottom:9px}
+.empty h3{font-family:var(--fh);font-size:19px;color:var(--navy);margin-bottom:5px}
+.badge{background:var(--tiger);color:#fff;border-radius:99px;font-size:10px;padding:0 6px;margin-left:4px}
+
+/* VIEWS */
+.view{display:none}
+.view.active{display:block}
+
+/* FOOTER */
+footer{background:var(--navy);color:#adc4e0;margin-top:44px;padding:40px 0 18px}
+.footgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:26px;margin-bottom:26px}
+.footbrand h3{font-family:var(--fh);font-size:25px;font-weight:700;color:#fff;margin-bottom:5px}
+.footbrand h3 span{color:var(--accent)}
+.footbrand p{font-size:13px;line-height:1.65}
+.footcol h4{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:11px}
+.footcol a{display:block;font-size:13px;color:#adc4e0;margin-bottom:6px;cursor:pointer}
+.footcol a:hover{color:#fff}
+.footbot{border-top:1px solid rgba(255,255,255,.1);padding-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px}
+.foothint{font-size:10px;color:rgba(255,255,255,.14);margin-top:4px;text-align:right}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📍 San Luis Obispo, CA &nbsp;·&nbsp; <span id="tbdate"></span></span>
+  <div class="tbl">
+    <a onclick="goSub()">Submit a Story</a>
+    <a href="https://ksby.com" target="_blank">KSBY</a>
+    <a href="https://newtimesslo.com" target="_blank">New Times</a>
+    <a href="https://calcoastnews.com" target="_blank">CalCoastNews</a>
+    <a href="https://www.slocity.org" target="_blank">City of SLO</a>
+  </div>
+</div>
+
+<div class="masthead">
+  <div class="mdate" id="mdate"></div>
+  <h1>SLO <span>Local</span></h1>
+  <div class="mtag">San Luis Obispo's Independent Hometown News Source</div>
+</div>
+
+<nav>
+  <div class="nvi">
+    <a id="nav-home" onclick="goHome()" class="active">Home</a>
+    <a onclick="goCat('News')">News</a>
+    <a onclick="goCat('Sports')">Sports</a>
+    <a class="tl" onclick="goTiger()">🐯 SLO High</a>
+    <a onclick="goCat('Eat &amp; Drink')">Eat &amp; Drink</a>
+    <a onclick="goCat('Real Estate')">Real Estate</a>
+    <a onclick="goCat('Events')">Events</a>
+    <a onclick="goCat('Outdoors')">Outdoors</a>
+    <a onclick="goCat('Cal Poly')">Cal Poly</a>
+    <a onclick="goChat()">💬 Community</a>
+    <a class="nsub" onclick="goSub()">+ Submit Story</a>
+  </div>
+</nav>
+
+<div class="ticker">
+  <span class="ttrack">
+    <span class="ttag">BREAKING</span>Five hospitalized after crash shuts down Highway 101 near SLO · March 29 &nbsp;⬥&nbsp;
+    <span class="ttag">WILDLIFE</span>Sea lion tests positive for bird flu H5N1 at Morro Strand State Beach &nbsp;⬥&nbsp;
+    <span class="ttag">EVENTS</span>SLO International Film Festival returns April 23–28 · 100+ films from 25 countries &nbsp;⬥&nbsp;
+    <span class="ttag">SLO HIGH</span>Tigers Boys Basketball beat Atascadero 60–58 in Mountain League play · Jan 30 &nbsp;⬥&nbsp;
+    <span class="ttag">CAL POLY</span>Alumnus Victor Glover to pilot NASA Artemis II moon mission in April 2026 &nbsp;⬥&nbsp;
+    <span class="ttag">CITY</span>Parks &amp; Rec Spring/Summer guide out now · Registration opens April 6 at 9 a.m. &nbsp;⬥&nbsp;
+    <span class="ttag">COMMUNITY</span>No Kings rally draws hundreds to downtown SLO · March 29 &nbsp;⬥&nbsp;
+  </span>
+</div>
+
+<!-- ══ HOME ══════════════════════════════════════════════ -->
+<div class="view active" id="view-home">
+<div class="container">
+  <!-- Ad: Top Leaderboard -->
+  <div class="ad ad-lb"><!-- PASTE GOOGLE ADSENSE LEADERBOARD (728×90) CODE HERE --><span>Advertisement</span><span class="adlbl">728×90 Leaderboard — Replace with your AdSense code</span></div>
+
+  <div class="pg">
+    <main>
+      <div class="hero" id="hero-el"></div>
+
+      <div class="sl"><h2>Latest News</h2></div>
+      <div class="cg" id="home-news"></div>
+
+      <!-- Ad: Mid Page -->
+      <div class="ad ad-lb"><!-- PASTE GOOGLE ADSENSE MID-PAGE (728×90) CODE HERE --><span>Advertisement</span><span class="adlbl">728×90 Mid-Page — Replace with your AdSense code</span></div>
+
+      <div class="sl"><h2>🏪 Business Watch — SLO</h2></div>
+      <div class="ocbox">
+        <div class="ochd"><span>Recent Business Changes — San Luis Obispo</span><span style="font-weight:400;opacity:.8">Editor-verified</span></div>
+        <div id="oc-home-rows">
+          <div class="ocrow"><span class="ocdot oco"></span><span class="ocname">No entries yet — add them in the Admin dashboard</span><span class="ocdate" onclick="goSub()" style="cursor:pointer;color:var(--navy);text-decoration:underline">Submit a tip →</span></div>
+        </div>
+        <div style="padding:7px 14px;font-size:11px;color:var(--muted)">Know of a business opening or closing? <span style="cursor:pointer;color:var(--navy);text-decoration:underline" onclick="goSub()">Submit a tip to our editors.</span></div>
+      </div>
+
+      <div class="sl tiger"><h2>🐯 SLO High Tigers</h2></div>
+      <div class="tbanner" onclick="goTiger()">
+        <div class="tbi">🏈</div>
+        <div><h3>Tiger Zone — School &amp; Sports</h3><p>SLO High scores, student news, and Tiger athletics. Click to enter.</p></div>
+      </div>
+      <div class="cg" id="home-tiger"></div>
+    </main>
+
+    <aside class="sb">
+      <div class="nl">
+        <h3>The SLO Weekly</h3>
+        <p>Top SLO stories every Thursday morning. Free.</p>
+        <input type="email" id="nl-em" placeholder="your@email.com">
+        <button onclick="nlSub()">Subscribe Free →</button>
+        <div id="nl-ok" style="display:none;font-size:13px;color:#adc4e0;margin-top:7px">✓ You're subscribed!</div>
+      </div>
+
+      <div class="wid">
+        <div class="wh">🗳️ SLO Pulse — This Week</div>
+        <div class="wb">
+          <div class="pollq">Should the City of SLO approve a downtown parking garage on Palm Street?</div>
+          <div id="poll-opts">
+            <button class="popt" onclick="vote(0)">Yes — we need the parking</button>
+            <button class="popt" onclick="vote(1)">No — invest in transit instead</button>
+            <button class="popt" onclick="vote(2)">Need more details first</button>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">Based on SLO City Council discussions, 2026. <a href="https://www.slocity.org" target="_blank" style="color:var(--navy);text-decoration:underline">Learn more →</a></div>
+        </div>
+      </div>
+
+      <!-- Ad: Sidebar Rectangle -->
+      <div class="ad ad-r"><!-- PASTE GOOGLE ADSENSE RECTANGLE (300×250) CODE HERE --><span>Advertisement</span><span class="adlbl">300×250</span></div>
+
+      <div class="wid"><div class="wh">🔥 Most Read</div><div class="wb" id="most-read"></div></div>
+
+      <div class="wid">
+        <div class="wh tiger">🐯 Tiger Scores</div>
+        <div class="wb">
+          <div class="sc"><div class="scsport">Boys Basketball · Mountain League · Jan 30, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Atascadero</div><div class="scs">60–58</div><div class="scr rw">✓ Tigers Win</div></div>
+          <div class="sc"><div class="scsport">Boys Basketball · Mountain League · Jan 26, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Independence</div><div class="scs">61–42</div><div class="scr rw">✓ Tigers Win</div></div>
+          <div class="sc"><div class="scsport">Boys Basketball · Mountain League · Jan 23, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Mission Prep</div><div class="scs">48–40</div><div class="scr rw">✓ Tigers Win</div></div>
+          <div class="sc" style="margin-bottom:0"><div class="scsport">Boys Basketball · Mountain League · Jan 20, 2026</div><div class="sct">SLO <span class="scvs">vs</span> St. Joseph</div><div class="scs">37–83</div><div class="scr rl">✗ Loss</div></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:9px;text-align:center">Source: <a href="https://www.maxpreps.com/ca/san-luis-obispo/san-luis-obispo-tigers/basketball/" target="_blank" style="color:var(--navy);text-decoration:underline">MaxPreps.com →</a></div>
+        </div>
+      </div>
+
+      <!-- Ad: Second Sidebar Rectangle -->
+      <div class="ad ad-r"><!-- PASTE GOOGLE ADSENSE RECTANGLE (300×250) CODE HERE --><span>Advertisement</span><span class="adlbl">300×250</span></div>
+    </aside>
+  </div>
+</div>
+</div>
+
+<!-- ══ CATEGORY ══════════════════════════════════════════ -->
+<div class="view" id="view-cat">
+<div class="container" style="padding-top:18px">
+  <button class="back" onclick="goHome()">← Home</button>
+  <div class="cathd" id="cat-hdr"></div>
+  <div class="pg">
+    <main><div class="cg" id="cat-grid"></div></main>
+    <aside class="sb">
+      <div class="nl"><h3>The SLO Weekly</h3><p>Top stories every Thursday — free.</p><input type="email" placeholder="your@email.com" id="nl-em2"><button onclick="nlSub2()">Subscribe →</button></div>
+      <div class="ad ad-r"><span>Advertisement</span><span class="adlbl">300×250</span></div>
+    </aside>
+  </div>
+</div>
+</div>
+
+<!-- ══ SLO HIGH ═══════════════════════════════════════════ -->
+<div class="view" id="view-tiger">
+<div class="container" style="padding-top:18px">
+  <button class="back" onclick="goHome()">← Home</button>
+  <div class="tbanner" style="cursor:default">
+    <div class="tbi">🐯</div>
+    <div><h3>SLO High Tiger Zone</h3><p>San Luis Obispo High School · 1499 San Luis Drive · Home of the Tigers · Black &amp; Gold</p></div>
+  </div>
+  <div class="pg">
+    <main>
+      <div class="sl tiger"><h2>Tiger News &amp; Sports</h2></div>
+      <div class="cg" id="tiger-grid"></div>
+      <div class="sl tiger" style="margin-top:4px"><h2>SLO High School Info</h2></div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px 22px;font-size:14px;line-height:1.9;color:var(--muted)">
+        <strong style="color:var(--text);font-size:15px">San Luis Obispo High School</strong><br>
+        1499 San Luis Drive, San Luis Obispo, CA 93401 · (805) 596-4040<br>
+        San Luis Coastal Unified School District · Home of the Tigers<br><br>
+        <a href="https://slohs.slcusd.org" target="_blank" style="color:var(--navy);text-decoration:underline">Official School Website</a> &nbsp;·&nbsp;
+        <a href="https://slohs.slcusd.org/athletics" target="_blank" style="color:var(--navy);text-decoration:underline">Tiger Athletics</a> &nbsp;·&nbsp;
+        <a href="https://www.maxpreps.com/ca/san-luis-obispo/san-luis-obispo-tigers/" target="_blank" style="color:var(--navy);text-decoration:underline">MaxPreps Scores &amp; Stats</a> &nbsp;·&nbsp;
+        <a href="https://gofan.co" target="_blank" style="color:var(--navy);text-decoration:underline">Buy Tickets (GoFan)</a>
+      </div>
+    </main>
+    <aside class="sb">
+      <div class="wid">
+        <div class="wh tiger">🐯 Tiger Score History</div>
+        <div class="wb">
+          <div class="sc"><div class="scsport">Boys Basketball · Jan 30, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Atascadero</div><div class="scs">60–58</div><div class="scr rw">✓ Win</div></div>
+          <div class="sc"><div class="scsport">Boys Basketball · Jan 26, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Independence</div><div class="scs">61–42</div><div class="scr rw">✓ Win</div></div>
+          <div class="sc"><div class="scsport">Boys Basketball · Jan 23, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Mission Prep</div><div class="scs">48–40</div><div class="scr rw">✓ Win</div></div>
+          <div class="sc"><div class="scsport">Boys Basketball · Jan 20, 2026</div><div class="sct">SLO <span class="scvs">vs</span> St. Joseph</div><div class="scs">37–83</div><div class="scr rl">✗ Loss</div></div>
+          <div class="sc"><div class="scsport">Boys Basketball · Jan 16, 2026</div><div class="sct">SLO <span class="scvs">vs</span> Arroyo Grande</div><div class="scs">49–46</div><div class="scr rw">✓ Win</div></div>
+          <div class="sc" style="margin-bottom:0"><div class="scsport">Football · 2025–26 Season Record</div><div class="sct" style="font-size:15px">SLO Tigers</div><div class="scs" style="font-size:16px">7–5 Overall</div><div class="scr" style="color:var(--muted)">Season complete · 3–1 League</div></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:9px;text-align:center">Source: <a href="https://www.maxpreps.com/ca/san-luis-obispo/san-luis-obispo-tigers/" target="_blank" style="color:var(--navy);text-decoration:underline">MaxPreps</a></div>
+        </div>
+      </div>
+      <div class="ad ad-r"><span>Advertisement</span><span class="adlbl">300×250</span></div>
+    </aside>
+  </div>
+</div>
+</div>
+
+<!-- ══ ARTICLE ════════════════════════════════════════════ -->
+<div class="view" id="view-art">
+<div class="container" style="padding-top:18px">
+  <button class="back" id="art-back-btn">← Back</button>
+  <div class="pg">
+    <main>
+      <div class="artfull" id="art-el"></div>
+      <div id="art-chat-area" style="margin-top:18px"></div>
+      <div class="ad ad-lb" style="margin-top:14px"><span>Advertisement</span><span class="adlbl">728×90 Post-Article</span></div>
+    </main>
+    <aside class="sb">
+      <div class="wid"><div class="wh">More Stories</div><div class="wb" id="related-list"></div></div>
+      <div class="ad ad-r"><span>Advertisement</span><span class="adlbl">300×250</span></div>
+    </aside>
+  </div>
+</div>
+</div>
+
+<!-- ══ COMMUNITY CHAT ═════════════════════════════════════ -->
+<div class="view" id="view-chat">
+<div class="container" style="padding-top:18px">
+  <button class="back" onclick="goHome()">← Home</button>
+  <div id="main-chat-area"></div>
+  <div style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 18px;font-size:13px;color:var(--muted);line-height:1.7">
+    <strong style="color:var(--text)">Community Forum Guidelines</strong><br>
+    This is a public forum for SLO residents, parents, students, and community members. All posts are visible to everyone. Keep discussions respectful and on-topic. Spam or abusive posts will be removed by our editors.
+  </div>
+</div>
+</div>
+
+<!-- ══ SUBMIT ═════════════════════════════════════════════ -->
+<div class="view" id="view-sub">
+<div class="container" style="padding-top:18px">
+  <button class="back" onclick="goHome()">← Home</button>
+  <div class="subwrap">
+    <h2>Submit a Story</h2>
+    <p class="subdesc">Have a news tip, community story, sports update, or event? Fill out the form below. Our editors review all submissions within 24 hours. Strong submissions may be published on SLO Local. We may edit for length and clarity. All submitted information must be factual and verifiable.</p>
+    <div class="okbox" id="sub-ok">🎉 Thanks for your submission! Our editors will review it within 24 hours.</div>
+    <div class="f2">
+      <div class="fr"><label>Your Name *</label><input type="text" id="sub-name" placeholder="Full name"></div>
+      <div class="fr"><label>Your Email *</label><input type="email" id="sub-email" placeholder="email@example.com"></div>
+    </div>
+    <div class="fr"><label>Story Headline *</label><input type="text" id="sub-title" placeholder="Write a clear, specific headline"></div>
+    <div class="fr">
+      <label>Section *</label>
+      <select id="sub-cat">
+        <option value="">— Choose a section —</option>
+        <option>News</option><option>Sports</option><option>SLO High</option>
+        <option>Eat &amp; Drink</option><option>Real Estate</option>
+        <option>Events</option><option>Outdoors</option><option>Cal Poly</option>
+      </select>
+    </div>
+    <div class="fr"><label>Your Story *</label><textarea id="sub-body" placeholder="Write your full story here. Include who, what, where, when, and why. Add as much detail as possible — more detail means a better chance of publication."></textarea></div>
+    <div class="fr"><label>Sources / Links (optional)</label><input type="text" id="sub-src" placeholder="Links, sources, or contacts our editors can use to verify the story"></div>
+    <div style="display:flex;align-items:center;gap:13px;flex-wrap:wrap">
+      <button class="btn" onclick="doSubmit()">Submit for Review →</button>
+      <span style="font-size:12px;color:var(--muted)">Reviewed within 24 hours · All content must be factual</span>
+    </div>
+    <div class="errbox" id="sub-err">Please fill in all required fields: Name, Email, Headline, Section, and Story.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══ ADMIN ══════════════════════════════════════════════ -->
+<div class="view" id="view-admin">
+<div class="container" style="padding-top:18px">
+  <div id="adm-login">
+    <div class="loginbox">
+      <h2>Editorial Access</h2>
+      <p>SLO Local staff &amp; editors only</p>
+      <input type="password" id="adm-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="btn" style="width:100%;margin-top:2px" onclick="doLogin()">Access Dashboard →</button>
+      <div class="errbox" id="login-err" style="display:none;margin-top:8px">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+  <div id="adm-dash" style="display:none">
+    <div class="adminwrap">
+      <div class="admhd">
+        <div><h2>Editorial Dashboard</h2><small style="color:#adc4e0;font-size:12px">SLO Local · Admin Panel</small></div>
+        <div style="display:flex;gap:9px;flex-wrap:wrap">
+          <button class="btng" style="color:#fff;border-color:rgba(255,255,255,.3);font-size:12px" onclick="exportSite()">⬇ Download Updated Site</button>
+          <button class="btng" style="color:#fff;border-color:rgba(255,255,255,.3);font-size:12px" onclick="doLogout()">Log Out</button>
+        </div>
+      </div>
+      <div class="admtabs">
+        <div class="atab active" onclick="aTab('write',this)">✏️ Write Article</div>
+        <div class="atab" onclick="aTab('published',this)">📄 Published (<span id="pub-count">0</span>)</div>
+        <div class="atab" onclick="aTab('submissions',this)">📬 Submissions <span id="sub-badge"></span></div>
+        <div class="atab" onclick="aTab('chatmod',this)">💬 Moderate Chat</div>
+        <div class="atab" onclick="aTab('bizwatch',this)">🏪 Business Watch</div>
+      </div>
+      <div class="admbody">
+
+        <!-- WRITE ARTICLE -->
+        <div id="atab-write">
+          <div class="okbox" id="pub-ok">✓ Article published! It is now live. Use "Download Updated Site" to save a copy with all articles baked in.</div>
+          <div class="fr"><label>Headline *</label><input type="text" id="a-title" placeholder="Write a strong, specific, factual headline..."></div>
+          <div class="f2">
+            <div class="fr"><label>Section *</label>
+              <select id="a-cat"><option value="">— Choose —</option><option>News</option><option>Sports</option><option>SLO High</option><option>Eat &amp; Drink</option><option>Real Estate</option><option>Events</option><option>Outdoors</option><option>Cal Poly</option></select>
+            </div>
+            <div class="fr"><label>Author Byline</label><input type="text" id="a-author" placeholder="e.g. Staff Reporter"></div>
+          </div>
+          <div class="fr"><label>Cover Image URL (optional)</label><input type="text" id="a-img" placeholder="https://... — use a direct link to a licensed/public-domain photo"></div>
+          <div class="fr"><label>Excerpt (shown on cards)</label><input type="text" id="a-excerpt" placeholder="1–2 sentence summary shown on article cards..."></div>
+          <div class="fr"><label>Full Article *</label><textarea id="a-body" style="min-height:320px" placeholder="Write the full article here.&#10;&#10;Use a blank line between paragraphs.&#10;&#10;All facts must be true and verifiable. Include dates, names, and sources."></textarea></div>
+          <div class="fr"><label>Source Link (optional)</label><input type="text" id="a-src" placeholder="https://... — source shown at bottom of article for transparency"></div>
+          <div class="fr"><label>Tags (comma separated)</label><input type="text" id="a-tags" placeholder="e.g. city council, downtown, budget, 2026"></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <input type="checkbox" id="a-brk" style="width:auto;margin:0;cursor:pointer">
+            <label for="a-brk" style="text-transform:none;letter-spacing:0;margin:0;font-size:13px;color:var(--text);cursor:pointer;font-weight:400">Mark as Breaking News (shows red "Breaking" badge)</label>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn" onclick="publishArt()">Publish Article Now →</button>
+            <button class="btng" onclick="previewArt()">Preview First</button>
+          </div>
+          <div class="errbox" id="pub-err">Please fill in the Headline, Section, and Article content.</div>
+          <div style="margin-top:18px;padding:13px 15px;background:var(--bg);border-radius:6px;border:1px solid var(--border);font-size:12.5px;color:var(--muted);line-height:1.7">
+            <strong style="color:var(--text)">How publishing works:</strong> When you click "Publish Article Now," the article is immediately saved to this browser and goes live on this device. To make it live for <em>all visitors</em> everywhere, click <strong>Download Updated Site</strong> at the top, then re-upload that single HTML file to your web host (Netlify, GitHub Pages, etc.). The whole process takes under 60 seconds.
+          </div>
+        </div>
+
+        <!-- PUBLISHED -->
+        <div id="atab-published" style="display:none">
+          <div id="pub-list"></div>
+        </div>
+
+        <!-- SUBMISSIONS -->
+        <div id="atab-submissions" style="display:none">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Review community-submitted story pitches. Approve to publish them instantly, or decline to delete.</p>
+          <div id="sub-list"></div>
+        </div>
+
+        <!-- CHAT MOD -->
+        <div id="atab-chatmod" style="display:none">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">All community forum posts across all threads. Delete any post that violates community guidelines.</p>
+          <div id="mod-list"></div>
+        </div>
+
+        <!-- BUSINESS WATCH -->
+        <div id="atab-bizwatch" style="display:none">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Manage the Business Watch tracker shown on the homepage. Add real business openings and closings in SLO.</p>
+          <div id="biz-list" style="margin-bottom:18px"></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:14px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+            <div style="flex:1;min-width:150px"><label>Business Name</label><input type="text" id="biz-name" placeholder="e.g. The Sidecar Bar &amp; Grill"></div>
+            <div style="min-width:160px"><label>Type / Location</label><input type="text" id="biz-type" placeholder="e.g. Restaurant · Higuera St."></div>
+            <div style="min-width:100px"><label>Status</label><select id="biz-status"><option value="open">Opening</option><option value="closed">Closing/Closed</option></select></div>
+            <div style="min-width:120px"><label>Date</label><input type="text" id="biz-date" placeholder="e.g. April 2026"></div>
+            <button class="btn" style="padding:9px 16px;font-size:13px" onclick="addBiz()">Add Entry →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footgrid">
+      <div class="footbrand">
+        <h3>SLO <span>Local</span></h3>
+        <p>San Luis Obispo's independent community news source. All content is factual and sourced. Not affiliated with any government entity or political organization.</p>
+      </div>
+      <div class="footcol">
+        <h4>Sections</h4>
+        <a onclick="goCat('News')">News</a>
+        <a onclick="goCat('Sports')">Sports</a>
+        <a onclick="goTiger()">🐯 SLO High</a>
+        <a onclick="goCat('Eat &amp; Drink')">Eat &amp; Drink</a>
+        <a onclick="goCat('Real Estate')">Real Estate</a>
+        <a onclick="goCat('Events')">Events</a>
+        <a onclick="goCat('Outdoors')">Outdoors</a>
+        <a onclick="goCat('Cal Poly')">Cal Poly</a>
+      </div>
+      <div class="footcol">
+        <h4>Community</h4>
+        <a onclick="goSub()">Submit a Story</a>
+        <a onclick="goChat()">Community Forum</a>
+        <a onclick="document.getElementById('nl-em').focus();goHome()">Newsletter Sign-Up</a>
+        <a href="https://ksby.com" target="_blank">KSBY News</a>
+        <a href="https://newtimesslo.com" target="_blank">New Times SLO</a>
+        <a href="https://calcoastnews.com" target="_blank">CalCoastNews</a>
+        <a href="https://www.slocity.org" target="_blank">City of SLO</a>
+      </div>
+      <div class="footcol">
+        <h4>About</h4>
+        <a>About SLO Local</a>
+        <a>Advertise With Us</a>
+        <a>Contact the Editors</a>
+        <a>Privacy Policy</a>
+        <a>Corrections Policy</a>
+      </div>
+    </div>
+    <div class="footbot">
+      <span>© 2026 SLO Local. All rights reserved. San Luis Obispo, California.</span>
+      <span>Independent · Community-run · Locally focused</span>
+    </div>
+    <div class="foothint">Admin access: type the secret code anywhere on the page</div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════
+const ADMIN_PW = 'tigers2026slo'; // Change this to your own password!
+
+// Secret keypress sequence — type "sloadmin" anywhere on the page (not in an input box)
+let kbuf = '';
+document.addEventListener('keydown', e => {
+  if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+  kbuf = (kbuf + e.key.toLowerCase()).slice(-12);
+  if (kbuf.includes('sloadmin')) { kbuf = ''; goAdmin(); }
+});
+
+// ═══════════════════════════════════════════════════════
+// REAL SEED ARTICLES (all sourced from actual SLO news)
+// ═══════════════════════════════════════════════════════
+const SEED_ARTICLES = [
+  {
+    id:'slo001',
+    title:'Five People Hospitalized After Crash Shuts Down Highway 101 Near San Luis Obispo',
+    category:'News',author:'Staff Reporter',date:'March 29, 2026',
+    img:'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&q=80',
+    excerpt:'A nighttime collision on Highway 101 near SLO sent five people to the hospital and temporarily closed lanes, according to first responders.',
+    body:`A nighttime collision on Highway 101 near San Luis Obispo sent five people to the hospital and shut down traffic Saturday evening, according to reports from first responders at the scene.
+
+Emergency crews responded and transported all five individuals to a local hospital. The extent of their injuries was not immediately disclosed by authorities.
+
+The incident caused a temporary disruption to northbound and southbound traffic on the 101. The California Highway Patrol and Caltrans responded to manage the closure.
+
+The CHP is investigating the cause of the crash. Further details, including the conditions of those hospitalized, are expected to be released as the investigation continues.
+
+Motorists can check Caltrans QuickMap at quickmap.dot.ca.gov for live traffic conditions on Highway 101 through the SLO area.`,
+    source:'https://calcoastnews.com/',tags:['highway 101','crash','traffic','public safety'],breaking:true,status:'published'
+  },
+  {
+    id:'slo002',
+    title:'No Kings Rally Draws Hundreds to Downtown San Luis Obispo',
+    category:'News',author:'Staff Reporter',date:'March 29, 2026',
+    img:'https://images.unsplash.com/photo-1591199787031-b71b65d24d0a?w=900&q=80',
+    excerpt:'Saturday marked the first nationwide No Kings protest of 2026, with demonstrations in downtown SLO, Atascadero, Santa Maria, and Lompoc.',
+    body:`Saturday marked a nationwide "No Kings" protest day, with demonstrations in several Central Coast communities including San Luis Obispo, Atascadero, Santa Maria, and Lompoc.
+
+Protesters marched through the streets of downtown San Luis Obispo to express opposition to what organizers described as federal overreach and the erosion of democratic norms.
+
+Participant David Leary spoke about his reasons for attending. "In order to understand history in our country, you need to know how democracy is supposed to work," he said. "This is democracy at its best."
+
+Local organizer Julia Young reflected on the sense of community the rally created. "Sometimes we get so siloed and we feel so isolated," Young said. "This reminds us that we're not alone."
+
+This year's SLO rally featured an "action alley" where local organizations set up informational tables, giving participants ways to stay involved beyond the march.
+
+Organizer Joanne Coghlan described the turnout as encouraging. "It's regular Americans wondering, how can I help?"`,
+    source:'https://www.ksby.com/san-luis-obispo/protesters-gather-in-cities-across-the-central-coast-for-no-kings-rallies',tags:['protest','downtown SLO','community'],breaking:false,status:'published'
+  },
+  {
+    id:'slo003',
+    title:'32nd SLO International Film Festival Returns April 23–28 with 100+ Films from 25 Countries',
+    category:'Events',author:'Entertainment Editor',date:'March 26, 2026',
+    img:'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=900&q=80',
+    excerpt:'The SLOIFF has announced a lineup of more than 100 films from 25 countries, including world and West Coast premieres, running April 23–28 at venues across SLO.',
+    body:`The 32nd San Luis Obispo International Film Festival runs April 23 through April 28, 2026, with a lineup of over 100 films from 25 countries spanning narrative features, short films, and documentaries.
+
+Festival Director Skye McLennan announced this year's theme: "Where Our Stories Live," reflecting San Luis Obispo's growing reputation as a home for storytellers and creatives.
+
+Feature highlights include:
+— World Premiere of "How to Date Again" with Haley Joel Osment and Kevin Nealon
+— West Coast Premiere of "The Musical," a dark comedy starring Rob Lowe, directed by SLOIFF alumni Giselle Bonilla
+— The international Silver Bear and Grand Jury Prize winner from Berlin: the Brazilian production "The Blue Trail"
+
+Special events include a Surf Nite screening at the historic Fremont Theater, opening with a set by local band RIFF TIDE, and a Community of Skate event at the Bay Theatre in Morro Bay. The Bay Theatre event features an exhibition by the SLO High School Advanced Graphic Design class.
+
+The "Filmmakers of Tomorrow" showcase, now in its 20th year, highlights short films by K–12 students from around the world.
+
+For tickets and the complete schedule, visit the festival's official website or check downtownslo.com.`,
+    source:'https://slochamber.org/member-news-the-32nd-edition-of-the-san-luis-obispo-international-film-festival-announces-film-lineup-for-2026/',tags:['film festival','events','SLOIFF','Fremont Theater','April'],breaking:false,status:'published'
+  },
+  {
+    id:'slo004',
+    title:'Motorcyclist Dies After Crash at Broad and Caudill Streets in San Luis Obispo',
+    category:'News',author:'Staff Reporter',date:'March 25, 2026',
+    img:'https://images.unsplash.com/photo-1567784177951-6fa58317e16b?w=900&q=80',
+    excerpt:'A motorcyclist died after colliding with a car turning onto Caudill Street from Broad Street in San Luis Obispo, according to the SLOPD.',
+    body:`A motorcyclist died Tuesday after crashing into a car in San Luis Obispo, the San Luis Obispo Police Department confirmed.
+
+The crash occurred just before 9 a.m. on southbound Broad Street near Caudill Street. According to a witness, the motorcyclist was traveling at a high rate of speed when a silver sedan heading northbound turned onto Caudill. The motorcyclist was unable to stop in time and struck the rear side of the sedan.
+
+Emergency responders transported the motorcyclist to a local hospital, where he later died from his injuries. His identity was not released pending notification of next of kin.
+
+The driver of the sedan stopped at the scene and cooperated with officers. SLOPD investigators are working to determine the full cause of the collision.
+
+Anyone with information or who witnessed the crash is encouraged to contact the San Luis Obispo Police Department.`,
+    source:'https://calcoastnews.com/2026/03/motorcyclist-crashes-into-car-in-san-luis-obispo-seriously-injured/',tags:['crash','broad street','SLOPD','public safety'],breaking:false,status:'published'
+  },
+  {
+    id:'slo005',
+    title:'Sea Lion at Morro Strand State Beach Tests Positive for Bird Flu H5N1',
+    category:'News',author:'Staff Reporter',date:'March 27, 2026',
+    img:'https://images.unsplash.com/photo-1466436578965-5cba086a1ab4?w=900&q=80',
+    excerpt:'A deceased sea lion found at Morro Strand State Beach has tested positive for avian influenza H5N1 — the first confirmed case in a marine mammal in SLO County.',
+    body:`A deceased sea lion found along Morro Strand State Beach in San Luis Obispo County has tested positive for avian influenza (H5N1), marking the first confirmed case in a marine mammal in the county.
+
+State and local wildlife officials are monitoring the situation closely. The California Department of Fish and Wildlife and the California Department of Public Health are working to assess any broader public health implications.
+
+Officials are urging the public to stay away from any sick, dead, or injured marine mammals and wildlife along the coast. Anyone who spots sick or deceased marine wildlife should report it to the West Coast Marine Mammal Stranding Network.
+
+The public is also advised to avoid ocean water contact during and in the days following significant rainstorms as a general safety precaution.
+
+Avian influenza in marine mammals is being tracked as part of a broader national monitoring effort by state and federal wildlife agencies. The risk to the general public is currently considered low, but officials urge caution around any wildlife showing unusual behavior or that appears ill.`,
+    source:'https://nationaltoday.com/us/ca/san-luis-obispo/news/2026/03/28/sea-lion-dies-from-bird-flu-in-san-luis-obispo/',tags:['bird flu','morro strand','sea lion','wildlife','public health'],breaking:false,status:'published'
+  },
+  {
+    id:'slo006',
+    title:'City Parks & Rec Releasing 2026 Spring/Summer Activity Guide — Registration Opens April 6',
+    category:'Events',author:'Staff Reporter',date:'March 30, 2026',
+    img:'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=900&q=80',
+    excerpt:'The City of SLO Parks & Recreation Department is releasing its 2026 Spring/Summer Activity Guide, with registration opening April 6 at 9 a.m. at slorecactivities.org.',
+    body:`The City of San Luis Obispo Parks & Recreation Department is releasing its 2026 Spring/Summer Activity Guide this week, with online registration opening April 6, 2026 at 9 a.m.
+
+The guide covers programs, classes, sports, events, and camps for all ages, running through the end of summer. Summer camp options include wilderness adventure experiences, scavenger hunts, field trips, science experiments, arts and crafts, and traditional and non-traditional sports — with new themes each week throughout the season.
+
+The SLO Swim Center is offering swim lessons and family recreation swim for all levels, from complete beginners to experienced swimmers.
+
+The full Activity Guide is available at www.slorecactivities.org, where residents can register starting April 6. You can also sign up for City News e-notifications at www.slocity.org/subscribe to stay informed about future programs and events.`,
+    source:'https://www.edhat.com/slo/news/your-guide-to-spring-summer-in-san-luis-obispo-has-arrived/',tags:['parks','recreation','summer camps','city of SLO','activities'],breaking:false,status:'published'
+  },
+  {
+    id:'slo007',
+    title:'SLO Resident Sues Cal Poly Over Refusal to Release Fraternity Event Locations',
+    category:'Cal Poly',author:'Staff Reporter',date:'March 26, 2026',
+    img:'https://images.unsplash.com/photo-1562774053-701939374585?w=900&q=80',
+    excerpt:'A San Luis Obispo woman filed a public records lawsuit against Cal Poly, seeking release of the addresses of registered fraternity events after the university stopped disclosing them.',
+    body:`A San Luis Obispo woman filed a public records lawsuit against Cal Poly President Jeffrey Armstrong and the California State University Board of Trustees on March 18, 2026, after the university refused to release the locations of registered fraternity parties and events.
+
+Kathie Walker, a former resident of the Alta Vista neighborhood and a longtime advocate for zoning enforcement in residential neighborhoods, is represented by attorney Matt Cate. The lawsuit was filed to coincide with Sunshine Week, an annual national observance of government transparency and open records.
+
+According to court filings, in October 2023 Cal Poly published an annual report that included street addresses of fraternity events. In July 2024, those addresses were replaced with city-level information only, and subsequent reports omitted them entirely.
+
+"This case is fundamentally about transparency and how public institutions serve the communities around them," Walker said in a statement. "When a public university collects information about organized activities that have real impacts on neighborhoods, that information should be accessible."
+
+Cal Poly spokesperson Keegan Koberl said the university "does not have any comment on pending litigation."
+
+The lawsuit argues that Cal Poly's handling of the records "hinders the City's effort to enforce municipal regulations and thereby protect its residents' well-being."`,
+    source:'https://www.yahoo.com/news/articles/slo-resident-sues-cal-poly-120000998.html',tags:['cal poly','fraternity','lawsuit','transparency','public records'],breaking:false,status:'published'
+  },
+  {
+    id:'slo008',
+    title:'Cal Poly Alumnus Victor Glover to Pilot NASA Artemis II Moon Mission This April',
+    category:'Cal Poly',author:'Staff Reporter',date:'March 25, 2026',
+    img:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=900&q=80',
+    excerpt:"Cal Poly alumnus Victor Glover (General Engineering, '99) will pilot NASA's Artemis II — the first crewed mission around the moon in over 50 years — launching in April 2026.",
+    body:`Cal Poly San Luis Obispo alumnus Victor Glover will pilot NASA's Artemis II mission, the first crewed mission to fly around the moon in more than 50 years, with a launch scheduled for April 2026.
+
+Glover earned his degree in General Engineering from Cal Poly in 1999 and has maintained deep ties to the university. He is also a Cal Poly parent — several of his children currently attend Cal Poly as students.
+
+Artemis II will take four astronauts on a roughly ten-day journey farther from Earth than any humans have traveled since the Apollo program ended in the 1970s. Glover will serve as pilot of the Orion spacecraft.
+
+Prior to Artemis II, Glover logged 168 days on the International Space Station during the SpaceX Crew-1 mission in 2020–21, where he served as pilot. He was the first Black astronaut to serve as a long-duration ISS crew member.
+
+Cal Poly students and faculty have had the opportunity to speak directly with Glover in virtual sessions leading up to the mission. The university has highlighted his connection to the campus as a source of pride for the SLO community.
+
+For more information on Victor Glover's connection to Cal Poly, visit ucm.calpoly.edu.`,
+    source:'https://ucm.calpoly.edu',tags:['cal poly','NASA','Artemis','space','Victor Glover'],breaking:false,status:'published'
+  },
+  {
+    id:'slo009',
+    title:'City Seeks Community Input on Foothill Boulevard Improvements — Open House April 2',
+    category:'News',author:'Staff Reporter',date:'March 30, 2026',
+    img:'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=900&q=80',
+    excerpt:'The City of SLO is inviting residents to help shape improvements to Foothill Boulevard at a community open house on April 2, or via an online survey at slocity.org.',
+    body:`The City of San Luis Obispo is inviting residents to attend a community open house or complete an online survey to help shape future improvements to Foothill Boulevard, a major corridor that connects several neighborhoods, Cal Poly, and downtown SLO.
+
+The in-person open house is scheduled for Thursday, April 2, 2026. The city is also accepting input through an online survey for residents unable to attend in person. Survey links are available at slocity.org.
+
+City planners are seeking feedback on a range of potential improvements along the Foothill corridor, including safety upgrades, pedestrian and bicycle infrastructure, transit access, and streetscape enhancements.
+
+Separately, the city is conducting information sessions on its upcoming Citywide Single Vote system for the November 2026 City Council elections. The first community meeting on that topic was held online March 25. Residents can subscribe to the city's e-newsletter at www.slocity.org/subscribe for updates on both topics.
+
+Pavement and striping work on Tank Farm Road was completed the week of March 21, 2026, according to the city.`,
+    source:'https://www.slocity.org/',tags:['foothill blvd','city hall','city council','roads','community input'],breaking:false,status:'published'
+  },
+  {
+    id:'slo010',
+    title:'Concerts in the Plaza Announces 30th Anniversary Season — Free Outdoor Music at Mission Plaza All Summer',
+    category:'Events',author:'Entertainment Editor',date:'March 2026',
+    img:'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=900&q=80',
+    excerpt:'Downtown SLO and the City of San Luis Obispo have announced the 30th Anniversary Season of Concerts in the Plaza — free Thursday evening outdoor shows at Mission Plaza, May through August.',
+    body:`Downtown SLO and the City of San Luis Obispo have announced the lineup for the 30th Anniversary Season of Concerts in the Plaza, a beloved free outdoor music series held every Thursday evening at Mission Plaza in downtown San Luis Obispo.
+
+The series runs from May through August 2026. All shows are free and open to the public, with music from 5 PM to 8 PM. Food and drink vendors set up starting at 4:30 PM.
+
+Organizers describe this year's 30th anniversary lineup as one of the strongest in the history of the series, featuring a wide range of genres and performers.
+
+Blankets and low-back chairs are welcome at all shows. Outside alcohol and large coolers are not permitted. No reservations needed — simply show up and enjoy.
+
+For the full 30th anniversary performer schedule, visit downtownslo.com. SLO Local will publish weekly previews throughout the summer concert season to help you plan your Thursdays.`,
+    source:'https://downtownslo.com/',tags:['concerts','Mission Plaza','downtown SLO','events','summer','music','free'],breaking:false,status:'published'
+  },
+  {
+    id:'slo011',
+    title:'SLO High Tigers Boys Basketball Beats Atascadero 60–58 in Tight Mountain League Game',
+    category:'SLO High',author:'Sports Desk',date:'January 30, 2026',
+    img:'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=900&q=80',
+    excerpt:'The SLO High Tigers Varsity Boys Basketball team won a close 60–58 game over the Atascadero Greyhounds Friday in Mountain League play, continuing their strong league run.',
+    body:`The San Luis Obispo High School Tigers Varsity Boys Basketball team picked up a hard-fought 60–58 victory over the Atascadero Greyhounds on Friday, January 30, 2026, in Mountain League competition.
+
+The win capped a strong stretch of league play for the Tigers. SLO High had also defeated Atascadero on January 13 (61–53) earlier in the season.
+
+Recent Tiger Boys Basketball results, 2025–26 season:
+— January 30: defeated Atascadero, 60–58 ✓
+— January 26: defeated Independence, 61–42 ✓
+— January 23: defeated Mission College Prep, 48–40 ✓
+— January 20: lost to St. Joseph, 37–83
+— January 16: defeated Arroyo Grande, 49–46 ✓
+— January 6: defeated Morro Bay, 58–20 ✓
+
+For full stats, schedules, and season results, visit the SLO High athletics page at slohs.slcusd.org/athletics or MaxPreps.`,
+    source:'https://www.maxpreps.com/ca/san-luis-obispo/san-luis-obispo-tigers/basketball/',tags:['basketball','SLO High','Tigers','Mountain League','sports'],breaking:false,status:'published'
+  },
+  {
+    id:'slo012',
+    title:'SLO High Cheer Competes at CIF State Traditional Competitive Cheer Championships',
+    category:'SLO High',author:'Sports Desk',date:'February 7, 2026',
+    img:'https://images.unsplash.com/photo-1553867745-6f8da6a0b701?w=900&q=80',
+    excerpt:'The SLO High School competitive cheer program competed at the CIF State Traditional Competitive Cheer Championships in February, representing the Tigers at the state level.',
+    body:`The San Luis Obispo High School competitive cheer program competed at the CIF State Traditional Competitive Cheer Championships on February 7, 2026, representing the Tigers at the highest level of competition in California high school cheer.
+
+CIF State Championships bring together top squads from across California, with teams judged on technical skill, synchronization, crowd-leading ability, and overall performance.
+
+Photos from the competition are available on the team's MaxPreps page. The SLO High cheer squad performs throughout the year at Tiger sporting events and school activities.
+
+For more on SLO High Tiger athletics across all sports and seasons, visit slohs.slcusd.org/athletics or follow SLO High on MaxPreps.`,
+    source:'https://www.maxpreps.com/ca/san-luis-obispo/san-luis-obispo-tigers/',tags:['cheer','SLO High','CIF','state championship','Tigers'],breaking:false,status:'published'
+  },
+  {
+    id:'slo013',
+    title:'Cal Poly Named "Most Promising Place to Work in Student Affairs" for 7th Time',
+    category:'Cal Poly',author:'Staff Reporter',date:'March 5, 2026',
+    img:'https://images.unsplash.com/photo-1583373834259-46cc92173cb7?w=900&q=80',
+    excerpt:'Cal Poly SLO has been named one of the "Most Promising Places to Work in Student Affairs" by ACPA and the EDU Ledger for the seventh time since 2017 — one of only two CSU campuses honored.',
+    body:`Cal Poly San Luis Obispo has been named one of the "Most Promising Places to Work in Student Affairs" by ACPA–College Student Educators International and the EDU Ledger, for the seventh time since 2017.
+
+Cal Poly is among 30 institutions of higher learning honored in 2026, and one of only two California State University campuses recognized alongside CSU Long Beach.
+
+Honorees were evaluated on staffing practices and work environment, with particular emphasis on family-friendliness, salary and benefits, and professional development opportunities.
+
+Cal Poly's Learn by Doing philosophy continues to attract and retain staff invested in applied, hands-on education. The university currently enrolls more than 22,000 students across disciplines including engineering, agriculture, architecture, computer science, and business.
+
+The full list of 2026 honorees and additional details are available at calpoly.edu.`,
+    source:'https://ucm.calpoly.edu',tags:['cal poly','award','student affairs','recognition'],breaking:false,status:'published'
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+// DATA LAYER
+// ═══════════════════════════════════════════════════════
+function getArts() {
+  // Merge SEED articles with any admin-published articles in localStorage
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  const storedIds = new Set(stored.map(a => a.id));
+  // Admin articles first, then seed articles not already overridden
+  return [...stored, ...SEED_ARTICLES.filter(a => !storedIds.has(a.id))];
+}
+function saveArts(arr) { localStorage.setItem('slo_arts', JSON.stringify(arr.filter(a => !SEED_ARTICLES.find(s => s.id === a.id)))); }
+function getSubs() { return JSON.parse(localStorage.getItem('slo_subs') || '[]'); }
+function saveSubs(arr) { localStorage.setItem('slo_subs', JSON.stringify(arr)); }
+function getBiz() { return JSON.parse(localStorage.getItem('slo_biz') || '[]'); }
+function saveBiz(arr) { localStorage.setItem('slo_biz', JSON.stringify(arr)); }
+function getMsgs(key) { return JSON.parse(localStorage.getItem('slo_chat_' + key) || '[]'); }
+function saveMsgs(key, arr) { localStorage.setItem('slo_chat_' + key, JSON.stringify(arr)); }
+
+// ═══════════════════════════════════════════════════════
+// ROUTING
+// ═══════════════════════════════════════════════════════
+let curView = 'home', curCat = '', curArtId = '', prevView = 'home';
+const THREADS = ['General SLO', 'SLO High Parents', 'City Hall Watch', 'Cal Poly', 'Sports Talk', 'Outdoors & Parks'];
+let activeThread = 'General SLO';
+
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  curView = id;
+}
+function setNav(selector) {
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  if (selector) { const el = document.querySelector(selector); if (el) el.classList.add('active'); }
+}
+function goHome() { setNav('#nav-home'); showView('home'); renderHome(); }
+function goCat(cat) { curCat = cat; setNav(null); showView('cat'); renderCat(cat); }
+function goTiger() { setNav(null); showView('tiger'); renderTiger(); }
+function goSub() { setNav(null); showView('sub'); }
+function goChat() { setNav(null); showView('chat'); renderMainChat(); }
+function goAdmin() { setNav(null); showView('admin'); if (adminLoggedIn) showDash(); }
+function goArt(id, from) {
+  prevView = from || curView;
+  curArtId = id;
+  showView('art');
+  renderArt(id);
+  document.getElementById('art-back-btn').onclick = () => showView(prevView);
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+function init() {
+  const now = new Date();
+  document.getElementById('mdate').textContent = now.toLocaleDateString('en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('tbdate').textContent = now.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+  renderHome();
+  renderBizHome();
+  initPoll();
+}
+
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function isTiger(a) { return a.category === 'SLO High'; }
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function imgDiv(url, alt, h) {
+  if (url) return `<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" style="width:100%;height:${h}px;object-fit:cover">`;
+  return `<div style="height:${h}px;display:flex;align-items:center;justify-content:center;background:#e8e0d5;font-size:36px">📰</div>`;
+}
+function cardHTML(a, from) {
+  const tc = isTiger(a) ? ' tc' : '';
+  const brkBadge = a.breaking ? `<div class="brk">Breaking</div>` : '';
+  const img = a.img
+    ? `<img src="${esc(a.img)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+    : `<div style="height:100%;background:#e8e0d5;display:flex;align-items:center;justify-content:center;font-size:32px">📰</div>`;
+  return `<div class="card" onclick="goArt('${esc(a.id)}','${from}')">
+    <div class="cimgw">${img}</div>
+    <div class="cbody">${brkBadge}<div class="ccat${tc}">${esc(a.category)}</div><div class="chl">${esc(a.title)}</div><div class="cexc">${esc(a.excerpt||'')}</div><div class="cmeta">${esc(a.date)} · ${esc(a.author)}</div></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// HOME
+// ═══════════════════════════════════════════════════════
+function renderHome() {
+  const arts = getArts().filter(a => a.status === 'published');
+
+  // Hero section — top 3 articles
+  const heroEl = document.getElementById('hero-el');
+  const h = arts.slice(0, 3);
+  if (h.length) {
+    const m = h[0];
+    const tc0 = isTiger(m) ? ' tc' : '';
+    const brkBadge = m.breaking ? `<div class="brk" style="margin-bottom:6px">Breaking</div>` : '';
+    const mImg = m.img ? `<img src="${esc(m.img)}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">` : '';
+    let html = `<div class="hm" onclick="goArt('${esc(m.id)}','home')">${mImg}<div class="hmo">${brkBadge}<div class="hcat${tc0}">${esc(m.category)}</div><div class="hhl">${esc(m.title)}</div><div class="hmeta">${esc(m.date)} · ${esc(m.author)}</div></div></div><div class="hs">`;
+    h.slice(1, 3).forEach(a => {
+      const tc = isTiger(a) ? ' tc' : '';
+      const sImg = a.img ? `<img src="${esc(a.img)}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">` : '';
+      html += `<div class="hsi" onclick="goArt('${esc(a.id)}','home')">${sImg}<div class="hsio"><div class="hcat${tc}">${esc(a.category)}</div><div class="hhl">${esc(a.title)}</div></div></div>`;
+    });
+    heroEl.innerHTML = html + '</div>';
+  }
+
+  // News cards (non-Tiger)
+  document.getElementById('home-news').innerHTML = arts.filter(a => !isTiger(a)).slice(0, 6).map(a => cardHTML(a, 'home')).join('');
+
+  // Tiger cards
+  const tigerArts = arts.filter(isTiger).slice(0, 3);
+  document.getElementById('home-tiger').innerHTML = tigerArts.length
+    ? tigerArts.map(a => cardHTML(a, 'home')).join('')
+    : `<p style="font-size:14px;color:var(--muted);grid-column:1/-1">SLO High stories will appear here. <span style="color:var(--tiger);cursor:pointer;text-decoration:underline" onclick="goSub()">Submit a Tiger story →</span></p>`;
+
+  // Most read
+  document.getElementById('most-read').innerHTML = arts.slice(0, 6).map(a =>
+    `<div class="wi" onclick="goArt('${esc(a.id)}','home')"><div class="wicat${isTiger(a)?' tc':''}">${esc(a.category)}</div><div class="wihl">${esc(a.title)}</div></div>`
+  ).join('');
+}
+
+function renderBizHome() {
+  const biz = getBiz();
+  const el = document.getElementById('oc-home-rows');
+  if (!biz.length) return;
+  el.innerHTML = biz.map(b =>
+    `<div class="ocrow"><span class="ocdot ${b.status==='open'?'oco':'occ'}"></span><span class="ocname">${esc(b.name)}</span><span class="octype">${esc(b.type)}</span><span class="ocdate">${esc(b.status==='open'?'Opening':'Closing/Closed')} · ${esc(b.date)}</span></div>`
+  ).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// CATEGORY
+// ═══════════════════════════════════════════════════════
+const catDescs = {
+  'News': 'Local government, public safety, city hall, roads, and everything happening in San Luis Obispo.',
+  'Sports': 'Cal Poly Mustangs, local leagues, and SLO County athletics — results, previews, and features.',
+  'Eat & Drink': 'Restaurant news, reviews, happy hours, the SLO Farmers Market, and food culture on the Central Coast.',
+  'Real Estate': 'SLO County housing market updates, neighborhood news, new listings, and property market trends.',
+  'Events': 'Concerts, festivals, farmers markets, outdoor events, and things to do in San Luis Obispo.',
+  'Outdoors': 'Trails, beaches, state parks, and outdoor adventure on the Central Coast — Bishop Peak to Montana de Oro.',
+  'Cal Poly': 'Cal Poly University news, Mustang athletics, student life, research, and campus updates.'
+};
+function renderCat(cat) {
+  const arts = getArts().filter(a => a.status === 'published' && a.category === cat);
+  document.getElementById('cat-hdr').innerHTML = `<h2>${esc(cat)}</h2><p>${esc(catDescs[cat]||'')}</p>`;
+  document.getElementById('cat-grid').innerHTML = arts.length
+    ? arts.map(a => cardHTML(a, 'cat')).join('')
+    : `<div class="empty" style="grid-column:1/-1"><div class="ei">📰</div><h3>No articles yet in ${esc(cat)}</h3><p>Be the first — <span style="color:var(--navy);cursor:pointer;text-decoration:underline" onclick="goSub()">submit a story</span>.</p></div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// SLO HIGH
+// ═══════════════════════════════════════════════════════
+function renderTiger() {
+  const arts = getArts().filter(a => a.status === 'published' && isTiger(a));
+  document.getElementById('tiger-grid').innerHTML = arts.length
+    ? arts.map(a => cardHTML(a, 'tiger')).join('')
+    : `<div class="empty" style="grid-column:1/-1"><div class="ei">🐯</div><h3>No Tiger Zone articles yet</h3><p><span style="color:var(--tiger);cursor:pointer;text-decoration:underline" onclick="goSub()">Submit a SLO High story →</span></p></div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// ARTICLE VIEW
+// ═══════════════════════════════════════════════════════
+function renderArt(id) {
+  const arts = getArts();
+  const art = arts.find(a => a.id === id);
+  if (!art) { document.getElementById('art-el').innerHTML = '<div class="empty"><div class="ei">📰</div><h3>Article not found</h3></div>'; return; }
+
+  const tc = isTiger(art) ? ' tc' : '';
+  const brkBadge = art.breaking ? `<div class="brk" style="margin-bottom:7px">Breaking</div>` : '';
+  const paras = art.body.split(/\n\n+/).filter(p => p.trim()).map(p => `<p>${esc(p)}</p>`).join('');
+  const srcHTML = art.source ? `<div class="afsrc">Source: <a href="${esc(art.source)}" target="_blank" rel="noopener noreferrer">${esc(art.source)}</a></div>` : '';
+  const imgHTML = art.img ? `<img src="${esc(art.img)}" alt="${esc(art.title)}" loading="lazy" style="width:100%;height:320px;object-fit:cover">` : '';
+
+  document.getElementById('art-el').innerHTML = `${imgHTML}<div class="artbody">${brkBadge}<div class="afcat${tc}">${esc(art.category)}</div><div class="afhl">${esc(art.title)}</div><div class="afby">By <strong>${esc(art.author)}</strong> &nbsp;·&nbsp; ${esc(art.date)}</div><div class="afcontent">${paras}</div>${srcHTML}</div>`;
+
+  // Related articles
+  document.getElementById('related-list').innerHTML = arts
+    .filter(a => a.id !== id && a.status === 'published')
+    .slice(0, 5)
+    .map(a => `<div class="wi" onclick="goArt('${esc(a.id)}','art')"><div class="wicat${isTiger(a)?' tc':''}">${esc(a.category)}</div><div class="wihl">${esc(a.title)}</div></div>`)
+    .join('');
+
+  // Article-level comments
+  const chatArea = document.getElementById('art-chat-area');
+  chatArea.innerHTML = '';
+  buildChat('art_' + id, chatArea, false);
+}
+
+// ═══════════════════════════════════════════════════════
+// COMMUNITY CHAT
+// ═══════════════════════════════════════════════════════
+function renderMainChat() {
+  const area = document.getElementById('main-chat-area');
+  area.innerHTML = '';
+  buildChat('main_' + activeThread, area, true);
+}
+
+function buildChat(key, container, showThreadTabs) {
+  const savedName = localStorage.getItem('slo_chat_name') || '';
+  container.innerHTML = `
+    <div class="chatbox">
+      <div class="chd">
+        <h3>${showThreadTabs ? '💬 Community Forum' : '💬 Article Comments'}</h3>
+        <small>${showThreadTabs ? 'Public · SLO community discussion' : 'Be respectful · All posts are public'}</small>
+      </div>
+      ${showThreadTabs ? `<div class="cthreads">${THREADS.map(t => `<button class="ctbtn${t===activeThread?' active':''}" onclick="switchThread('${t}')">${t}</button>`).join('')}</div>` : ''}
+      <div class="cnrow">
+        <input type="text" id="cn-${key}" placeholder="Your name (e.g. SLO Parent, Tiger Fan)" maxlength="40" value="${esc(savedName)}">
+        <span class="cnhint">Public · visible to everyone</span>
+      </div>
+      <div class="cfeed" id="cf-${key}"></div>
+      <div class="ccomp">
+        <textarea id="ct-${key}" placeholder="Write a comment... (Enter to post, Shift+Enter for new line)" rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();postMsg('${key}')}"></textarea>
+        <button onclick="postMsg('${key}')">Post</button>
+      </div>
+      <div class="cdisc">SLO Local reserves the right to remove posts that violate community guidelines. This is a public forum visible to all visitors.</div>
+    </div>`;
+  renderFeed(key);
+}
+
+function renderFeed(key) {
+  const feed = document.getElementById('cf-' + key);
+  if (!feed) return;
+  const msgs = getMsgs(key);
+  if (!msgs.length) {
+    feed.innerHTML = `<div class="cempty">No comments yet — start the conversation!</div>`;
+    return;
+  }
+  feed.innerHTML = msgs.map(m => {
+    const initials = m.name.split(' ').map(w => (w[0]||'').toUpperCase()).join('').slice(0,2) || '?';
+    const isTav = m.name.toLowerCase().includes('tiger') || m.name.toLowerCase().includes('parent') || m.name.toLowerCase().includes('fan');
+    return `<div class="cmsg">
+      <div class="cmsgd">
+        <div class="cav${isTav?' tav':''}">${initials}</div>
+        <span class="cauthor">${esc(m.name)}</span>
+        <span class="ctime">${m.time}</span>
+      </div>
+      <div class="ctext">${esc(m.text)}</div>
+    </div>`;
+  }).join('');
+  feed.scrollTop = feed.scrollHeight;
+}
+
+function postMsg(key) {
+  const ni = document.getElementById('cn-' + key);
+  const ti = document.getElementById('ct-' + key);
+  const name = (ni?.value || '').trim();
+  const text = (ti?.value || '').trim();
+  if (!name) { ni?.focus(); alert('Please enter your name before posting.'); return; }
+  if (!text) { ti?.focus(); return; }
+  if (text.length > 1000) { alert('Please keep posts under 1,000 characters.'); return; }
+  localStorage.setItem('slo_chat_name', name);
+  const msgs = getMsgs(key);
+  msgs.push({
+    id: 'msg' + Date.now(),
+    name, text,
+    time: new Date().toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'}),
+    ts: Date.now(), key
+  });
+  saveMsgs(key, msgs);
+  if (ti) ti.value = '';
+  renderFeed(key);
+}
+
+function switchThread(t) {
+  activeThread = t;
+  renderMainChat();
+}
+
+// ═══════════════════════════════════════════════════════
+// POLL
+// ═══════════════════════════════════════════════════════
+function initPoll() {
+  const v = JSON.parse(localStorage.getItem('slo_poll') || 'null');
+  if (v) renderPollResults(v);
+}
+function vote(idx) {
+  const v = JSON.parse(localStorage.getItem('slo_poll') || '[0,0,0]');
+  v[idx]++;
+  localStorage.setItem('slo_poll', JSON.stringify(v));
+  renderPollResults(v);
+}
+function renderPollResults(v) {
+  const labels = ['Yes — we need the parking', 'No — invest in transit instead', 'Need more details first'];
+  const total = v.reduce((a,b)=>a+b, 0);
+  document.getElementById('poll-opts').innerHTML = labels.map((l,i) => {
+    const p = total ? Math.round(v[i]/total*100) : 0;
+    return `<div class="pbr"><div style="display:flex;justify-content:space-between"><span>${l}</span><strong>${p}%</strong></div><div class="pbrb"><div class="pbar" style="width:${p}%"></div></div></div>`;
+  }).join('') + `<div style="font-size:11px;color:var(--muted);margin-top:5px">${total} vote${total===1?'':'s'} cast</div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// NEWSLETTER
+// ═══════════════════════════════════════════════════════
+function nlSub() {
+  const em = (document.getElementById('nl-em')?.value||'').trim();
+  if (!em || !em.includes('@')) return;
+  document.getElementById('nl-ok').style.display = 'block';
+  document.getElementById('nl-em').value = '';
+}
+function nlSub2() {
+  const em = (document.getElementById('nl-em2')?.value||'').trim();
+  if (!em || !em.includes('@')) return;
+  document.getElementById('nl-em2').value = '';
+  alert('✓ Subscribed! You\'ll receive the SLO Weekly every Thursday.');
+}
+
+// ═══════════════════════════════════════════════════════
+// SUBMIT STORY
+// ═══════════════════════════════════════════════════════
+function doSubmit() {
+  const n = document.getElementById('sub-name').value.trim();
+  const e = document.getElementById('sub-email').value.trim();
+  const t = document.getElementById('sub-title').value.trim();
+  const c = document.getElementById('sub-cat').value;
+  const b = document.getElementById('sub-body').value.trim();
+  const errEl = document.getElementById('sub-err');
+  if (!n || !e || !t || !c || !b) { errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  const subs = getSubs();
+  subs.unshift({
+    id: 'sub' + Date.now(), name: n, email: e, title: t, category: c, body: b,
+    source: document.getElementById('sub-src').value.trim(),
+    date: new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}),
+    status: 'pending'
+  });
+  saveSubs(subs);
+  document.getElementById('sub-ok').style.display = 'block';
+  ['sub-name','sub-email','sub-title','sub-body','sub-src'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('sub-cat').value = '';
+  updateSubBadge();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN AUTH
+// ═══════════════════════════════════════════════════════
+let adminLoggedIn = false;
+function doLogin() {
+  const pw = document.getElementById('adm-pw').value;
+  if (pw === ADMIN_PW) {
+    adminLoggedIn = true;
+    document.getElementById('adm-pw').value = '';
+    document.getElementById('login-err').style.display = 'none';
+    showDash();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+  }
+}
+function doLogout() {
+  adminLoggedIn = false;
+  document.getElementById('adm-dash').style.display = 'none';
+  document.getElementById('adm-login').style.display = 'block';
+  goHome();
+}
+function showDash() {
+  document.getElementById('adm-login').style.display = 'none';
+  document.getElementById('adm-dash').style.display = 'block';
+  updateSubBadge();
+  updatePubCount();
+  renderPubList();
+  renderSubList();
+  renderChatMod();
+  renderBizAdmin();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN TABS
+// ═══════════════════════════════════════════════════════
+function aTab(tab, el) {
+  document.querySelectorAll('.atab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  ['write','published','submissions','chatmod','bizwatch'].forEach(t => {
+    const e = document.getElementById('atab-' + t);
+    if (e) e.style.display = t === tab ? 'block' : 'none';
+  });
+  if (tab === 'published') renderPubList();
+  if (tab === 'submissions') renderSubList();
+  if (tab === 'chatmod') renderChatMod();
+  if (tab === 'bizwatch') renderBizAdmin();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN: PUBLISH ARTICLE
+// ═══════════════════════════════════════════════════════
+function publishArt() {
+  const title = document.getElementById('a-title').value.trim();
+  const cat = document.getElementById('a-cat').value;
+  const body = document.getElementById('a-body').value.trim();
+  const errEl = document.getElementById('pub-err');
+  if (!title || !cat || !body) { errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  stored.unshift({
+    id: 'art' + Date.now(),
+    title, category: cat,
+    author: document.getElementById('a-author').value.trim() || 'SLO Local Staff',
+    img: document.getElementById('a-img').value.trim(),
+    excerpt: document.getElementById('a-excerpt').value.trim() || body.slice(0, 130) + '...',
+    body,
+    source: document.getElementById('a-src').value.trim(),
+    tags: document.getElementById('a-tags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    breaking: document.getElementById('a-brk').checked,
+    date: new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}),
+    status: 'published'
+  });
+  localStorage.setItem('slo_arts', JSON.stringify(stored));
+
+  ['a-title','a-author','a-img','a-excerpt','a-body','a-src','a-tags'].forEach(id => {
+    const e = document.getElementById(id); if(e) e.value='';
+  });
+  document.getElementById('a-cat').value = '';
+  document.getElementById('a-brk').checked = false;
+
+  const ok = document.getElementById('pub-ok');
+  ok.style.display = 'block';
+  setTimeout(() => ok.style.display='none', 7000);
+  updatePubCount();
+  renderPubList();
+}
+
+function previewArt() {
+  const title = document.getElementById('a-title').value.trim();
+  const cat = document.getElementById('a-cat').value;
+  const body = document.getElementById('a-body').value.trim();
+  if (!title || !cat) { alert('Fill in at least Headline and Section to preview.'); return; }
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  const tmpId = 'preview_tmp';
+  const existing = stored.findIndex(a => a.id === tmpId);
+  const tmp = {
+    id: tmpId, title, category: cat,
+    author: document.getElementById('a-author').value.trim() || 'SLO Local Staff',
+    img: document.getElementById('a-img').value.trim(),
+    excerpt: document.getElementById('a-excerpt').value.trim() || body.slice(0,130)+'...',
+    body, source: document.getElementById('a-src').value.trim(), tags:[],
+    breaking: document.getElementById('a-brk').checked,
+    date: new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),
+    status:'published'
+  };
+  if (existing >= 0) stored[existing] = tmp; else stored.unshift(tmp);
+  localStorage.setItem('slo_arts', JSON.stringify(stored));
+  goArt(tmpId, 'admin');
+}
+
+function updatePubCount() {
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  const total = stored.length + SEED_ARTICLES.length;
+  const el = document.getElementById('pub-count');
+  if (el) el.textContent = total;
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN: PUBLISHED LIST
+// ═══════════════════════════════════════════════════════
+function renderPubList() {
+  const el = document.getElementById('pub-list');
+  if (!el) return;
+  const arts = getArts();
+  if (!arts.length) { el.innerHTML = '<div class="empty"><div class="ei">📄</div><h3>No articles yet</h3><p>Use the Write Article tab to publish your first article.</p></div>'; return; }
+  el.innerHTML = arts.map(a => {
+    const isSeed = SEED_ARTICLES.find(s => s.id === a.id);
+    return `<div class="pubrow">
+      <div class="pubinfo">
+        <div class="pubhl" onclick="goArt('${esc(a.id)}','admin')">${esc(a.title)}</div>
+        <div class="pubmeta">${esc(a.category)} · ${esc(a.date)} · ${esc(a.author)}</div>
+      </div>
+      <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;background:${isSeed?'#dbeafe;color:#1e40af':'#dcfce7;color:#166534'};">${isSeed?'Seed':'Published'}</span>
+      ${!isSeed ? `<button class="btndel" style="margin-left:8px" onclick="delArt('${esc(a.id)}')">Delete</button>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function delArt(id) {
+  if (!confirm('Delete this article permanently?')) return;
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  localStorage.setItem('slo_arts', JSON.stringify(stored.filter(a => a.id !== id)));
+  updatePubCount();
+  renderPubList();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN: SUBMISSIONS
+// ═══════════════════════════════════════════════════════
+function updateSubBadge() {
+  const count = getSubs().length;
+  const el = document.getElementById('sub-badge');
+  if (el) el.innerHTML = count ? `<span class="badge">${count}</span>` : '';
+}
+function renderSubList() {
+  const el = document.getElementById('sub-list');
+  if (!el) return;
+  const subs = getSubs();
+  if (!subs.length) {
+    el.innerHTML = '<div class="empty"><div class="ei">📬</div><h3>No pending submissions</h3><p>Community story submissions will appear here for your review.</p></div>';
+    return;
+  }
+  el.innerHTML = subs.map(s => `
+    <div class="subrow">
+      <div class="subinfo">
+        <div class="subtit">${esc(s.title)}</div>
+        <div class="submeta">${esc(s.category)} · By <strong>${esc(s.name)}</strong> (${esc(s.email)}) · Submitted ${esc(s.date)}</div>
+        <div class="subprev">${esc(s.body)}</div>
+        ${s.source ? `<div style="font-size:11px;color:var(--navy);margin-top:3px">Source: ${esc(s.source)}</div>` : ''}
+      </div>
+      <div class="subacts">
+        <button class="btnacc" onclick="approveSub('${esc(s.id)}')">✓ Approve &amp; Publish</button>
+        <button class="btndel" onclick="rejectSub('${esc(s.id)}')">✗ Decline</button>
+      </div>
+    </div>`).join('');
+}
+
+function approveSub(id) {
+  const subs = getSubs();
+  const sub = subs.find(s => s.id === id);
+  if (!sub) return;
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  stored.unshift({
+    id: 'art' + Date.now(),
+    title: sub.title, category: sub.category,
+    author: 'Community Contributor — ' + sub.name,
+    body: sub.body,
+    excerpt: sub.body.slice(0, 130) + '...',
+    img: '', source: sub.source || '', tags: [],
+    breaking: false,
+    date: sub.date,
+    status: 'published'
+  });
+  localStorage.setItem('slo_arts', JSON.stringify(stored));
+  saveSubs(subs.filter(s => s.id !== id));
+  updateSubBadge();
+  updatePubCount();
+  renderSubList();
+  renderPubList();
+  alert(`✓ "${sub.title}" is now published and live!`);
+}
+
+function rejectSub(id) {
+  if (!confirm('Decline and delete this submission? This cannot be undone.')) return;
+  saveSubs(getSubs().filter(s => s.id !== id));
+  updateSubBadge();
+  renderSubList();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN: CHAT MODERATION
+// ═══════════════════════════════════════════════════════
+function renderChatMod() {
+  const el = document.getElementById('mod-list');
+  if (!el) return;
+  // Collect all chat keys from localStorage
+  const allMsgs = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith('slo_chat_')) {
+      try {
+        const msgs = JSON.parse(localStorage.getItem(k) || '[]');
+        msgs.forEach(m => allMsgs.push({...m, _key: k}));
+      } catch(e) {}
+    }
+  }
+  allMsgs.sort((a,b) => (b.ts||0) - (a.ts||0));
+  if (!allMsgs.length) {
+    el.innerHTML = '<div class="empty"><div class="ei">💬</div><h3>No chat posts yet</h3><p>Community forum posts will appear here as people comment.</p></div>';
+    return;
+  }
+  el.innerHTML = allMsgs.map(m => {
+    const thread = (m._key||'').replace('slo_chat_','').replace('main_','').replace('art_','article: ');
+    return `<div class="modrow">
+      <div class="modinfo">
+        <div class="modau">${esc(m.name)} <span style="font-weight:400;color:var(--muted)">in ${thread}</span></div>
+        <div class="modmeta">${m.time || ''}</div>
+        <div class="modtxt">${esc(m.text)}</div>
+      </div>
+      <button class="btndel" onclick="delMsg('${esc(m._key)}','${esc(m.id)}')">Delete</button>
+    </div>`;
+  }).join('');
+}
+
+function delMsg(key, msgId) {
+  if (!confirm('Delete this post?')) return;
+  const msgs = getMsgs(key).filter(m => m.id !== msgId);
+  saveMsgs(key, msgs);
+  renderChatMod();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN: BUSINESS WATCH
+// ═══════════════════════════════════════════════════════
+function renderBizAdmin() {
+  const el = document.getElementById('biz-list');
+  if (!el) return;
+  const biz = getBiz();
+  if (!biz.length) { el.innerHTML = '<p style="font-size:13px;color:var(--muted)">No entries yet. Use the form below to add business openings or closings.</p>'; return; }
+  el.innerHTML = biz.map((b,i) => `
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)">
+      <span class="ocdot ${b.status==='open'?'oco':'occ'}" style="width:8px;height:8px;border-radius:50%;flex-shrink:0"></span>
+      <span style="flex:1;font-size:13px;font-weight:500">${esc(b.name)}</span>
+      <span style="font-size:12px;color:var(--muted)">${esc(b.type)}</span>
+      <span style="font-size:12px;color:var(--muted)">${esc(b.status==='open'?'Opening':'Closing')} · ${esc(b.date)}</span>
+      <button class="btndel" onclick="delBiz(${i})">Remove</button>
+    </div>`).join('');
+}
+function addBiz() {
+  const name = document.getElementById('biz-name').value.trim();
+  const type = document.getElementById('biz-type').value.trim();
+  const status = document.getElementById('biz-status').value;
+  const date = document.getElementById('biz-date').value.trim();
+  if (!name || !type || !date) { alert('Please fill in Business Name, Type/Location, and Date.'); return; }
+  const biz = getBiz();
+  biz.unshift({name, type, status, date});
+  saveBiz(biz);
+  ['biz-name','biz-type','biz-date'].forEach(id => { const e=document.getElementById(id); if(e) e.value=''; });
+  renderBizAdmin();
+  renderBizHome();
+}
+function delBiz(idx) {
+  if (!confirm('Remove this business entry?')) return;
+  const biz = getBiz();
+  biz.splice(idx, 1);
+  saveBiz(biz);
+  renderBizAdmin();
+  renderBizHome();
+}
+
+// ═══════════════════════════════════════════════════════
+// EXPORT / DOWNLOAD UPDATED SITE
+// ═══════════════════════════════════════════════════════
+function exportSite() {
+  // Serialize all current data into the HTML so it works on any device
+  const stored = JSON.parse(localStorage.getItem('slo_arts') || '[]');
+  const subs = getSubs();
+  const biz = getBiz();
+
+  // Build the export data script
+  const exportScript = `
+<script id="export-data">
+(function(){
+  var arts = ${JSON.stringify(stored)};
+  var biz = ${JSON.stringify(biz)};
+  if(arts.length) localStorage.setItem('slo_arts', JSON.stringify(arts));
+  if(biz.length) localStorage.setItem('slo_biz', JSON.stringify(biz));
+})();
+<\/script>`;
+
+  // Get current page HTML and inject the export data before </body>
+  let html = document.documentElement.outerHTML;
+  // Remove any existing export data script
+  html = html.replace(/<script id="export-data">[\s\S]*?<\/script>/g, '');
+  html = html.replace('</body>', exportScript + '</body>');
+
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'slolocal.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
